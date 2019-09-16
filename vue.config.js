@@ -1,7 +1,6 @@
 module.exports = {
-  publicPath: process.env.BASE_URL,
   lintOnSave: true,
   devServer: {
-    disableHostCheck: true
+    allowedHosts: process.env.ALLOWED_HOSTS.split(',') || []
   }
 };
