@@ -1,0 +1,19 @@
+<template>
+  <div class="section">
+    <router-link to="/login/twitch">Login Twitch</router-link>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Login extends Vue {
+
+}
+</script>
+
+<style scoped>
+
+</style>
