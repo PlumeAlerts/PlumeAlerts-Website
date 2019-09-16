@@ -19,6 +19,6 @@ jobs:
         - b2 authorize-account ${B2_STAGING_KEY_ID} ${B2_STAGING_KEY}
         - b2 sync --keepDays 30 --replaceNewer dist/ b2://plumealerts/staging/
         - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
-        - curl --ftp-create-dirs -T dist/* --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@${SFTP_HOST}${SFTP_PATH}
+        - curl --ftp-create-dirs -T dist/ --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@${SFTP_HOST}${SFTP_PATH}
 cache:
   yarn: true
