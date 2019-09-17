@@ -24,9 +24,9 @@ import Component from 'vue-class-component';
 import DashboardHome from '@/views/dashboard/DashboardHome.vue';
 
 @Component({
-    components: {
-        DashboardHome,
-    },
+  components: {
+    DashboardHome,
+  },
 })
 export default class Dashboard extends Vue {
 }

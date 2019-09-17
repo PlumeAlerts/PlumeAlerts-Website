@@ -9,7 +9,7 @@
       <p class="card-header-title">
         {{this.title}}
       </p>
-      <div class="card-header-icon" aria-label="close"  @click="this.closeItem">
+      <div class="card-header-icon" aria-label="close" @click="this.closeItem">
         <span class="icon">
           <i class="fas fa-times"></i>
         </span>
@@ -27,14 +27,14 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component({
-    props: {
-        title: String,
-    },
+  props: {
+    title: String,
+  },
 })
 export default class ComponentCard extends Vue {
-    public closeItem() {
-        this.$emit('close', true);
-        console.log('test');
-    }
+  public closeItem() {
+    this.$emit('close', true);
+    console.log('test');
+  }
 }
 </script>

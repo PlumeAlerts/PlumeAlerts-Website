@@ -35,32 +35,32 @@ import ComponentCard from '@/components/dashboard/ComponentCard.vue';
 import ComponentChat from '@/components/dashboard/ComponentChat.vue';
 
 export enum CardType {
-    CHAT = 'ComponentChat',
+  CHAT = 'ComponentChat',
 }
 
 interface CustomData extends GridItemData {
-    title: string;
-    closed: boolean;
-    type: CardType;
+  title: string;
+  closed: boolean;
+  type: CardType;
 }
 
 @Component({
-    components: {
-        GridLayout: VueGridLayout.GridLayout,
-        GridItem: VueGridLayout.GridItem,
-        ComponentCard,
-        ComponentChat,
-    },
+  components: {
+    GridLayout: VueGridLayout.GridLayout,
+    GridItem: VueGridLayout.GridItem,
+    ComponentCard,
+    ComponentChat,
+  },
 })
 export default class DashboardHome extends Vue {
-    private defaultLayout: CustomData[] = [
-        {x: 7, y: 0, w: 3, h: 18, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
-    ];
+  private defaultLayout: CustomData[] = [
+    {x: 7, y: 0, w: 3, h: 18, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
+  ];
 
-    private layout: CustomData[] = [];
+  private layout: CustomData[] = [];
 
-    public created() {
-        this.layout = this.defaultLayout;
-    }
+  public created() {
+    this.layout = this.defaultLayout;
+  }
 }
 </script>
