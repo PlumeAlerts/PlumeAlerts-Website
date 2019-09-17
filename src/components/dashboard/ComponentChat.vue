@@ -1,7 +1,7 @@
 <template>
   <iframe
     id="chat_embed"
-    src="https://www.twitch.tv/embed/lclc98/chat"
+    src="https://www.twitch.tv/embed/lclc98/chat?darkpopout"
     frameborder="0"
     scrolling="no"
     width="100%"

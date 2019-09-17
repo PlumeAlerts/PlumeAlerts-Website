@@ -19,4 +19,7 @@ export default {
   getTwitchResponse(code: string, state: string): Promise<AxiosResponse<TwitchLoginResponse>> {
     return API.get('/auth/twitch/response', {params: {code, state}});
   },
+  postValidate(token: string): Promise<AxiosResponse> {
+    return API.post('/auth/validate', undefined, {headers: {Authorization: 'Bearer ' + token}});
+  },
 };

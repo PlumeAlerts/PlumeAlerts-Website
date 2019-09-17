@@ -8,11 +8,11 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Login from '@/network/v1/login';
+import Util from '@/util/utility';
 
 @Component
 export default class LoginTwitch extends Vue {
   private error?: string;
-
 
   public created() {
     const code = this.$route.query.code;
@@ -21,10 +21,11 @@ export default class LoginTwitch extends Vue {
     if (typeof code === 'string' && typeof state === 'string') {
       Login.getTwitchResponse(code, state)
         .then((value) => {
-          this.$cookies.set('accessToken', value.data.accessToken, '30M', undefined, undefined, true);
-          this.$cookies.set('expiredAt', value.data.expiredAt, '30M', undefined, undefined, true);
-          this.$cookies.set('refreshToken', value.data.refreshToken, '7D', undefined, undefined, true);
-          this.$cookies.set('refreshExpiredAt', value.data.refreshExpiredAt, '7D', undefined, undefined, true);
+          const data = value.data;
+          this.$cookies.set('accessToken', data.accessToken, '30M', undefined, undefined, Util.isProduction());
+          this.$cookies.set('expiredAt', data.expiredAt, '30M', undefined, undefined, Util.isProduction());
+          this.$cookies.set('refreshToken', data.refreshToken, '7D', undefined, undefined, Util.isProduction());
+          this.$cookies.set('refreshExpiredAt', data.refreshExpiredAt, '7D', undefined, undefined, Util.isProduction());
           this.$router.push('/dashboard');
         })
         .catch((reason) => {

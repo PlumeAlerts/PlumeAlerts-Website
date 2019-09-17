@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <grid-layout
       :layout.sync="layout"
       :col-num="10"
@@ -54,7 +54,7 @@ interface CustomData extends GridItemData {
 })
 export default class DashboardHome extends Vue {
   private defaultLayout: CustomData[] = [
-    {x: 7, y: 0, w: 3, h: 18, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
+    {x: 7, y: 0, w: 3, h: 20, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
   ];
 
   private layout: CustomData[] = [];
