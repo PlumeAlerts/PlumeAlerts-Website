@@ -8,7 +8,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Login from '@/network/v1/login';
-import Util from '@/util/utility';
+import Util from '@/util/util';
 
 @Component
 export default class LoginTwitch extends Vue {

@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import store from '@/store';
 
 import './assets/style.scss';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -18,6 +19,7 @@ export default new Router({
       path: '/dashboard',
       name: 'dashboard',
       component: () => import(/* webpackChunkName: "twitch-login-response" */ './views/dashboard/Dashboard.vue'),
+      meta: {requiresAuth: true},
     },
     {
       path: '/login',
@@ -36,3 +38,25 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    store.dispatch('validateLogin')
+      .then((value: boolean) => {
+        if (value) {
+          next();
+        } else {
+          next({
+            path: '/login',
+            query: {redirect: to.fullPath},
+          });
+        }
+      });
+  } else {
+    next(); // make sure to always call next()!
+  }
+});
+
+export default router;

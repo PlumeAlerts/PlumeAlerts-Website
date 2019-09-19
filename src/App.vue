@@ -40,27 +40,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Login from '@/network/v1/login';
+import {Action, Getter} from 'vuex-class';
 
 @Component
 export default class App extends Vue {
-  private loggedIn: boolean = false;
-
-  public created() {
-    if (this.$cookies.isKey('accessToken')) {
-      Login.postValidate(this.$cookies.get('accessToken'))
-        .then((value) => {
-          if (value.status === 200) {
-            // TODO Make sure a refresh is done before reaching this point
-            this.loggedIn = true;
-          } else {
-            this.loggedIn = false;
-          }
-        })
-        .catch(() => this.loggedIn = false);
-    } else {
-      this.loggedIn = false;
-    }
-  }
+  @Getter public loggedIn!: boolean;
 }
 </script>
