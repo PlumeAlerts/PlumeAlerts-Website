@@ -22,6 +22,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import DashboardHome from '@/views/dashboard/DashboardHome.vue';
+import User from '@/network/v1/user';
 
 @Component({
   components: {
@@ -29,5 +30,13 @@ import DashboardHome from '@/views/dashboard/DashboardHome.vue';
   },
 })
 export default class Dashboard extends Vue {
+
+  public mounted() {
+    User.getUser(this.$cookies.get('accessToken'))
+      .then((value) => {
+        console.log(value);
+      })
+      .catch((reason) => console.log(reason));
+  }
 }
 </script>

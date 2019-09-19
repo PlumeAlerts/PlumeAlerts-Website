@@ -4,7 +4,9 @@ import router from './router';
 import store from './store';
 
 import VueCookies from 'vue-cookies';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VueCookies);

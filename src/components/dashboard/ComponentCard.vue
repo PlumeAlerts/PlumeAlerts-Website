@@ -3,7 +3,7 @@
     <header class="card-header card-draggable">
       <a class="card-header-icon" aria-label="move">
         <span class="icon">
-          <i class="fas fa-align-justify"></i>
+          <font-awesome-icon icon="align-justify"/>
         </span>
       </a>
       <p class="card-header-title">
@@ -11,7 +11,7 @@
       </p>
       <div class="card-header-icon" aria-label="close" @click="this.closeItem">
         <span class="icon">
-          <i class="fas fa-times"></i>
+          <font-awesome-icon icon="times"/>
         </span>
       </div>
     </header>
@@ -25,7 +25,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faAlignJustify, faTimes} from '@fortawesome/free-solid-svg-icons';
 
+library.add(faAlignJustify, faTimes);
 @Component({
   props: {
     title: String,
