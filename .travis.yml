@@ -5,15 +5,12 @@ node_js:
 cache: yarn
 
 stages:
+  - name: test
   # Staging
   - name: buildStaging
     if: tag IS blank AND branch = master
-  - name: deployStaging
-    if: tag IS blank AND branch = master
   # Release
   - name: build
-    if: tag IS present AND branch = master
-  - name: deploy
     if: tag IS present AND branch = master
 
 jobs:
@@ -23,14 +20,8 @@ jobs:
     # Staging
     - stage: buildStaging
       name: "Building Staging"
-      script: yarn build:staging
-    - stage: deployStaging
-      name: "Deploying Staging"
-      script: ./scripts/staging/deploy.sh
+      script: yarn build:staging && ./scripts/staging/deploy.sh
     # Release
     - stage: build
       name: "Building"
-      script: yarn build
-    - stage: deploy
-      name: "Deploying"
-      script: ./scripts/release/deploy.sh
+      script: yarn build &&  ./scripts/release/deploy.sh
