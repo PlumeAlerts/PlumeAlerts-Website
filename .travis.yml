@@ -1,38 +1,32 @@
 language: node_js
 node_js:
   - "10"
+
+cache: yarn
+
 install:
   - yarn install
   - pip install --user --upgrade b2
 script:
   - yarn lint
-  - if [ "$TRAVIS_TAG" != "" ]; then yarn build; fi
-  - if [ "$TRAVIS_TAG" == "" ]; then yarn build:staging; fi
-# Temp fix switch  to build stages
 
-cache: yarn
-
-before_deploy:
-  - b2 authorize-account ${B2_STAGING_KEY_ID} ${B2_STAGING_APPLICATION_KEY}
-  - echo "${SFTP_STAGING_KEY}" | base64 --decode >/tmp/deploy_rsa
-  - eval "$(ssh-agent -s)"
-  - ssh-keyscan ${SFTP_STAGING_HOST} >> ~/.ssh/known_hosts
-  - chmod 600 /tmp/deploy_rsa
-  - ssh-add /tmp/deploy_rsa
-
-deploy:
-  ## Deploy to staging
-  # Deploy to B2
-  - provider: script
-    skip_cleanup: true
-    script: b2 sync --keepDays 14 --replaceNewer dist/ b2://plumealerts/staging/
-    on:
-      branch: master
-      tags: false
-  # Deploy to server
-  - provider: script
-    skip_cleanup: true
-    script: rsync -r --delete-after dist/ ${SFTP_STAGING_USER}@${SFTP_STAGING_HOST}:${SFTP_STAGING_PATH}
-    on:
-      branch: master
-      tags: false
+jobs:
+  include:
+    # Staging
+    - stage: buildStaging
+      name: "Building Staging"
+      if: tag IS blank AND branch = master
+      script: yarn build:staging
+    - stage: deployStaging
+      name: "Deploying Staging"
+      if: tag IS blank AND branch = master
+      script: ./scripts/staging/deploy.sh
+    # Release
+    - stage: build
+      name: "Building"
+      if: tag IS present AND branch = master
+      script: yarn build
+    - stage: deploy
+      name: "Deploying"
+      if: tag IS present AND branch = master
+      script: ./scripts/release/deploy.sh
