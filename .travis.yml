@@ -25,12 +25,14 @@ deploy:
   # Deploy to B2
   - provider: script
     skip_cleanup: true
-    script: b2 sync --keepDays 7 --replaceNewer dist/ b2://plumealerts/staging/
+    script: b2 sync --keepDays 14 --replaceNewer dist/ b2://plumealerts/staging/
     on:
-      branch: develop
+      branch: master
+      tags: false
   # Deploy to server
   - provider: script
     skip_cleanup: true
     script: rsync -r --delete-after dist/ ${SFTP_USER}@${SFTP_HOST}:${SFTP_PATH}
     on:
-      branch: develop
+      branch: master
+      tags: false

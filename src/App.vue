@@ -40,7 +40,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {Action, Getter} from 'vuex-class';
+import {Getter} from 'vuex-class';
 
 @Component
 export default class App extends Vue {

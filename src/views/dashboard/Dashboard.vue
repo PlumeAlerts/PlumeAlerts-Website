@@ -8,6 +8,7 @@
           </p>
           <ul class="menu-list">
             <li><a class="is-active">Dashboard</a></li>
+            <li><a>Settings</a></li>
           </ul>
         </aside>
       </div>
@@ -32,7 +33,7 @@ import User from '@/network/v1/user';
 export default class Dashboard extends Vue {
 
   public mounted() {
-    User.getUser(this.$cookies.get('accessToken'))
+    User.getUser()
       .then((value) => {
         console.log(value);
       })

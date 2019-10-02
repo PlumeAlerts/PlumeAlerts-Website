@@ -1,5 +1,6 @@
 import API from './api';
 import {AxiosResponse} from 'axios';
+import Vue from 'vue';
 
 export interface User {
   id: string;
@@ -10,7 +11,7 @@ export interface User {
 }
 
 export default {
-  getUser(token: string): Promise<AxiosResponse<User>> {
-    return API.get('/user', {headers: {Authorization: 'Bearer ' + token}});
+  getUser(): Promise<AxiosResponse<User>> {
+    return API.get('/user', {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}});
   },
 };
