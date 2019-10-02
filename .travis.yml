@@ -10,23 +10,30 @@ install:
 script:
   - yarn lint
 
+stages:
+  # Staging
+  - name: buildStaging
+  - name: deployStaging
+    if: tag IS blank AND branch = master
+  # Release
+  - name: build
+  - name: deploy
+    if: tag IS present AND branch = master
+
+
 jobs:
   include:
     # Staging
     - stage: buildStaging
       name: "Building Staging"
-      if: tag IS blank AND branch = master
       script: yarn build:staging
     - stage: deployStaging
       name: "Deploying Staging"
-      if: tag IS blank AND branch = master
       script: ./scripts/staging/deploy.sh
     # Release
     - stage: build
       name: "Building"
-      if: tag IS present AND branch = master
       script: yarn build
     - stage: deploy
       name: "Deploying"
-      if: tag IS present AND branch = master
       script: ./scripts/release/deploy.sh
