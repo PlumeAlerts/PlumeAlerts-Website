@@ -6,14 +6,14 @@ install:
   - pip install --user --upgrade b2
 script:
   - yarn lint
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then yarn build; fi
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then yarn build:staging; fi
+  - if [ "$TRAVIS_TAG" != "" ]; then yarn build; fi
+  - if [ "$TRAVIS_TAG" == "" ]; then yarn build:staging; fi
 # Temp fix switch  to build stages
 
 cache: yarn
 
 before_deploy:
-  - b2 authorize-account ${B2_STAGING_KEY_ID} ${B2_STAGING_KEY}
+  - b2 authorize-account ${B2_STAGING_KEY_ID} ${B2_STAGING_APPLICATION_KEY}
   - echo "${SFTP_KEY}" | base64 --decode >/tmp/deploy_rsa
   - eval "$(ssh-agent -s)"
   - ssh-keyscan ${SFTP_HOST} >> ~/.ssh/known_hosts
@@ -32,7 +32,7 @@ deploy:
   # Deploy to server
   - provider: script
     skip_cleanup: true
-    script: rsync -r --delete-after dist/ ${SFTP_USER}@${SFTP_HOST}:${SFTP_PATH}
+    script: rsync -r --delete-after dist/ ${SFTP_STAGING_USER}@${SFTP_STAGING_HOST}:${SFTP_STAGING_PATH}
     on:
       branch: master
       tags: false
