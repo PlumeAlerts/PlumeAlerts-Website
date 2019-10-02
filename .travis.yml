@@ -4,25 +4,22 @@ node_js:
 
 cache: yarn
 
-install:
-  - yarn install
-  - pip install --user --upgrade b2
-script:
-  - yarn lint
-
 stages:
   # Staging
   - name: buildStaging
+    if: tag IS blank AND branch = master
   - name: deployStaging
     if: tag IS blank AND branch = master
   # Release
   - name: build
+    if: tag IS present AND branch = master
   - name: deploy
     if: tag IS present AND branch = master
 
-
 jobs:
   include:
+    - stage: test
+      script: yarn lint
     # Staging
     - stage: buildStaging
       name: "Building Staging"

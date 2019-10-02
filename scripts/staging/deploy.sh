@@ -2,6 +2,7 @@
 set -ev
 
 # Deploy B2
+pip install --user --upgrade b2
 b2 authorize-account $B2_STAGING_KEY_ID $B2_STAGING_APPLICATION_KEY
 b2 sync --keepDays 14 --replaceNewer dist/ b2://plumealerts/staging/
 
