@@ -11,6 +11,9 @@ import Component from 'vue-class-component';
 @Component
 export default class Login extends Vue {
 
+  public mounted() {
+    this.$router.push('/login/twitch');
+  }
 }
 </script>
 
