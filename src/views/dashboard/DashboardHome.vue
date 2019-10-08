@@ -11,6 +11,7 @@
       :margin="[10, 10]"
       :use-css-transforms="true">
       <grid-item v-if="!item.closed" v-for="item in layout"
+                 class="is-flex"
                  :x="item.x"
                  :y="item.y"
                  :w="item.w"
@@ -33,9 +34,11 @@ import Component from 'vue-class-component';
 import VueGridLayout, {GridItemData} from 'vue-grid-layout';
 import ComponentCard from '@/components/dashboard/ComponentCard.vue';
 import ComponentChat from '@/components/dashboard/ComponentChat.vue';
+import ComponentNotifications from '@/components/dashboard/ComponentNotifications.vue';
 
 export enum CardType {
   CHAT = 'ComponentChat',
+  NOTIFICATIONS = 'ComponentNotifications',
 }
 
 interface CustomData extends GridItemData {
@@ -50,11 +53,13 @@ interface CustomData extends GridItemData {
     GridItem: VueGridLayout.GridItem,
     ComponentCard,
     ComponentChat,
+    ComponentNotifications,
   },
 })
 export default class DashboardHome extends Vue {
   private defaultLayout: CustomData[] = [
     {x: 7, y: 0, w: 3, h: 20, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
+    {x: 0, y: 0, w: 5, h: 10, i: '1', title: 'Notifications', closed: false, type: CardType.NOTIFICATIONS},
   ];
 
   private layout: CustomData[] = [];

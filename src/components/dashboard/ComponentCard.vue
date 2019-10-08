@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+  <div class="card is-flex" style="flex: auto; flex-direction: column">
     <header class="card-header card-draggable">
       <a class="card-header-icon" aria-label="move">
         <span class="icon">
@@ -16,7 +16,7 @@
       </div>
     </header>
 
-    <div class="card-content" style="width: 100%; height: 100%;">
+    <div class="card-content is-flex" style="flex: 1; padding: 0; min-height: 0">
       <slot></slot>
     </div>
   </div>
