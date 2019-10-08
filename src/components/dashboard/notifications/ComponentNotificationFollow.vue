@@ -1,5 +1,5 @@
 <template>
-  <td>Followed by {{data.username}}</td>
+  <td>Followed by <b>{{data.username}}</b></td>
 </template>
 
 <script lang="ts">
