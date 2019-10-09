@@ -7981,10 +7981,10 @@ vue-cookies@^1.5.13:
   resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.5.13.tgz#b1ca79a2663bf9a4f36982557011cab5ee2196c0"
   integrity sha512-8pjpXnvbNWx1Lft0t3MJnW+ylv0Wa2Tb6Ch617u/pQah3+SfXUZZdkh3EL3bSpe/Sw2Wdw3+DhycgQsKANSxXg==
 
-vue-file-agent@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.2.0.tgz#1525350d8ad722d7737b61e96fb0b74911daafc7"
-  integrity sha512-zUOwrrEz/IgI0mkPDkXWmpenzigk4/0/pWItyytV/Z0ZwzqTaVxHABtO/knyx1MdDrrserNsUMLrdE88Ak6qcg==
+vue-file-agent@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.3.0.tgz#a0a3b6b27416dffa39bd580bf77a9a405ae8bb90"
+  integrity sha512-RwOZr1e/SzU0ZdBeRdAhsOkca7aF5gdW/ekkCaYaPpXzoNixa61XI0Yl1YQEjMFa9W4hHKq/GQgEJafk3kx4LQ==
   dependencies:
     vue "^2.6.10"
 
