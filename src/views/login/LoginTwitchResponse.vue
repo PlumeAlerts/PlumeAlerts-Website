@@ -21,7 +21,7 @@ export default class LoginTwitch extends Vue {
     if (typeof code === 'string' && typeof state === 'string') {
       Login.getTwitchResponse(code, state)
         .then((value) => {
-          const data = value.data;
+          const data = value.data.data;
           this.$cookies.set('accessToken', data.accessToken, '30M', undefined, undefined, Util.isProduction());
           this.$cookies.set('expiredAt', data.expiredAt, '30M', undefined, undefined, Util.isProduction());
           this.$cookies.set('refreshToken', data.refreshToken, '7D', undefined, undefined, Util.isProduction());
