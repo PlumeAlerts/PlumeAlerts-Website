@@ -17,7 +17,7 @@ export default class LoginTwitch extends Vue {
   public created() {
     Login.getTwitchAuth()
       .then((value) => {
-        window.location.href = value.data.url;
+        window.location.href = value.data.data.url;
       })
       .catch((reason) => {
         this.error = 'Failed to login ' + reason; // TODO move to localization file

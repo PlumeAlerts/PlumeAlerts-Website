@@ -1,4 +1,4 @@
-import API from './api';
+import API, {Data} from './api';
 import {AxiosResponse} from 'axios';
 import Vue from 'vue';
 
@@ -14,10 +14,6 @@ export enum NotificationType {
   follow = 'ComponentNotificationFollow',
 }
 
-export interface Data<T> {
-  data: T;
-}
-
 export interface Notification {
   userId: string;
   createdAt: number;
@@ -29,7 +25,7 @@ export interface NotificationFollow extends Notification {
 }
 
 export default {
-  getUser(): Promise<AxiosResponse<User>> {
+  getUser(): Promise<AxiosResponse<Data<User>>> {
     return API.get('/user', {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}});
   },
   getUserNotifications(): Promise<AxiosResponse<Data<Notification[]>>> {

@@ -1,4 +1,4 @@
-import API from './api';
+import API, {Data} from './api';
 import {AxiosResponse} from 'axios';
 
 export interface TwitchLogin {
@@ -13,10 +13,10 @@ export interface TwitchLoginResponse {
 }
 
 export default {
-  getTwitchAuth(): Promise<AxiosResponse<TwitchLogin>> {
+  getTwitchAuth(): Promise<AxiosResponse<Data<TwitchLogin>>> {
     return API.get('/auth/twitch/login');
   },
-  getTwitchResponse(code: string, state: string): Promise<AxiosResponse<TwitchLoginResponse>> {
+  getTwitchResponse(code: string, state: string): Promise<AxiosResponse<Data<TwitchLoginResponse>>> {
     return API.get('/auth/twitch/response', {params: {code, state}});
   },
   postValidate(token: string): Promise<AxiosResponse> {
