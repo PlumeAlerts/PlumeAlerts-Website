@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <router-link class="navbar-item" to="/">
+        <router-link class="navbar-item" :to="loggedIn ? '/dashboard' : '/'">
           <img src="https://via.placeholder.com/640x160.png" width="112" height="28" alt="logo">
         </router-link>
 
