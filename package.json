@@ -13,7 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/vue-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
-    "bulma": "git://github.com/jgthms/bulma#e63641d",
+    "bulma": "git://github.com/jgthms/bulma#1cb190d",
     "pretty-ms": "^5.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
