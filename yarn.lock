@@ -8014,10 +8014,10 @@ vue-cookies@^1.5.13:
   resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.5.13.tgz#b1ca79a2663bf9a4f36982557011cab5ee2196c0"
   integrity sha512-8pjpXnvbNWx1Lft0t3MJnW+ylv0Wa2Tb6Ch617u/pQah3+SfXUZZdkh3EL3bSpe/Sw2Wdw3+DhycgQsKANSxXg==
 
-vue-file-agent@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.3.0.tgz#a0a3b6b27416dffa39bd580bf77a9a405ae8bb90"
-  integrity sha512-RwOZr1e/SzU0ZdBeRdAhsOkca7aF5gdW/ekkCaYaPpXzoNixa61XI0Yl1YQEjMFa9W4hHKq/GQgEJafk3kx4LQ==
+vue-file-agent@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.3.1.tgz#bfe8bc6f301b01ac2274b0a0e113accb1db02806"
+  integrity sha512-coeCWhV+IOOBB7sFI6pP9kylYzqYx250o3Q389PRHGdskhRBfKErEbZITFJDiwV1aCMlJFGhJyFXpP73Ojfn+w==
   dependencies:
     vue "^2.6.10"
 
