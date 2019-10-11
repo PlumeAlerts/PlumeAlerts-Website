@@ -7,11 +7,12 @@
     <ul>
       <li>Added chat element.</li>
       <li>Added notification element</li>
+      <li>Added a changelog</li>
     </ul>
 
     <h3 class="title is-3">Bug Fixes</h3>
     <ul>
-      <li>None.</li>
+      <li>Fixed logo going to landing page instead of dashboard.</li>
     </ul>
   </div>
 </template>
