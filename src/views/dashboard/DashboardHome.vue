@@ -10,7 +10,7 @@
       :vertical-compact="true"
       :margin="[10, 10]"
       :use-css-transforms="true">
-      <grid-item v-if="!item.closed" v-for="item in layout"
+      <grid-item v-if="item.show" v-for="item in layout"
                  class="is-flex"
                  :x="item.x"
                  :y="item.y"
@@ -20,8 +20,8 @@
                  dragAllowFrom=".card-draggable"
                  :key="item.i">
         <ComponentCard :title="item.title"
-                       v-on:close="item.closed = true">
-          <component :is="item.type"></component>
+                       v-on:close="close(item)">
+          <component :is="item.component"></component>
         </ComponentCard>
       </grid-item>
     </grid-layout>
@@ -35,16 +35,29 @@ import VueGridLayout, {GridItemData} from 'vue-grid-layout';
 import ComponentCard from '@/components/dashboard/ComponentCard.vue';
 import ComponentChat from '@/components/dashboard/ComponentChat.vue';
 import ComponentNotifications from '@/components/dashboard/ComponentNotifications.vue';
+import User, {DashboardData} from '@/network/v1/user';
 
-export enum CardType {
-  CHAT = 'ComponentChat',
-  NOTIFICATIONS = 'ComponentNotifications',
+interface CardType {
+  COMPONENT: string;
+  TITLE: string;
 }
+
+const CardData = {
+  CHAT: {
+    TITLE: 'Chat',
+    COMPONENT: 'ComponentChat',
+  },
+  NOTIFICATION: {
+    TITLE: 'Notifications',
+    COMPONENT: 'ComponentNotifications',
+  },
+};
 
 interface CustomData extends GridItemData {
   title: string;
-  closed: boolean;
-  type: CardType;
+  show: boolean;
+  type: string;
+  component: string;
 }
 
 @Component({
@@ -57,15 +70,43 @@ interface CustomData extends GridItemData {
   },
 })
 export default class DashboardHome extends Vue {
-  private defaultLayout: CustomData[] = [
-    {x: 7, y: 0, w: 3, h: 20, i: '0', title: 'Chat', closed: false, type: CardType.CHAT},
-    {x: 0, y: 0, w: 5, h: 10, i: '1', title: 'Notifications', closed: false, type: CardType.NOTIFICATIONS},
-  ];
 
   private layout: CustomData[] = [];
 
-  public created() {
-    this.layout = this.defaultLayout;
+  public mounted() {
+    User.getDashboard()
+      .then((value) => {
+        for (const [i, dashboard] of value.data.data.entries()) {
+          if (CardData.hasOwnProperty(dashboard.type)) {
+            const card: CardType = CardData[dashboard.type];
+            this.layout.push({
+              i: `${i}`,
+              title: card.TITLE,
+              type: dashboard.type,
+              component: card.COMPONENT,
+              x: dashboard.x,
+              y: dashboard.y,
+              w: dashboard.width,
+              h: dashboard.height,
+              show: dashboard.show,
+            });
+          }
+        }
+      })
+      .catch((reason) => console.log(reason));
+  }
+
+  public close(item: CustomData) {
+    item.show = false;
+    const data: DashboardData = {
+      type: item.type,
+      x: item.x,
+      y: item.y,
+      width: item.w,
+      height: item.h,
+      show: item.show,
+    };
+    User.putDashboard(data);
   }
 }
 </script>
