@@ -42,7 +42,7 @@ interface CardType {
   TITLE: string;
 }
 
-const CardData = {
+const CardData: Record<string, CardType> = {
   CHAT: {
     TITLE: 'Chat',
     COMPONENT: 'ComponentChat',
@@ -77,12 +77,13 @@ export default class DashboardHome extends Vue {
     User.getDashboard()
       .then((value) => {
         for (const [i, dashboard] of value.data.data.entries()) {
-          if (CardData.hasOwnProperty(dashboard.type)) {
-            const card: CardType = CardData[dashboard.type];
+          const type: string = dashboard.type;
+          if (type in CardData) {
+            const card: CardType = CardData[type];
             this.layout.push({
               i: `${i}`,
               title: card.TITLE,
-              type: dashboard.type,
+              type,
               component: card.COMPONENT,
               x: dashboard.x,
               y: dashboard.y,
