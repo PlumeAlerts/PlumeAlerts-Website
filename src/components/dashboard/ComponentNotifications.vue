@@ -26,7 +26,7 @@ export default class ComponentNotifications extends Vue {
   private now = new Date();
 
   public mounted() {
-    User.getUserNotifications()
+    User.getNotifications()
       .then((value) => {
         this.data = value.data.data;
       })
