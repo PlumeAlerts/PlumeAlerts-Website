@@ -37,7 +37,6 @@ library.add(faAlignJustify, faTimes);
 export default class ComponentCard extends Vue {
   public closeItem() {
     this.$emit('close', true);
-    console.log('test');
   }
 }
 </script>

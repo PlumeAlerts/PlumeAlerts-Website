@@ -13,7 +13,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import ComponentNotificationFollow from '@/components/dashboard/notifications/ComponentNotificationFollow.vue';
-import User, {Notification, NotificationType} from '@/network/v1/user';
+import UserAPI, {Notification, NotificationType} from '@/network/v1/UserAPI';
 import * as prettyMilliseconds from 'pretty-ms';
 
 @Component({
@@ -26,7 +26,7 @@ export default class ComponentNotifications extends Vue {
   private now = new Date();
 
   public mounted() {
-    User.getNotifications()
+    UserAPI.getNotifications()
       .then((value) => {
         this.data = value.data.data;
       })

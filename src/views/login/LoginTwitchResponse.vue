@@ -7,7 +7,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Login from '@/network/v1/login';
+import AuthAPI from '@/network/v1/AuthAPI';
 import Util from '@/util/util';
 
 @Component
@@ -19,7 +19,7 @@ export default class LoginTwitch extends Vue {
     const state = this.$route.query.state;
 
     if (typeof code === 'string' && typeof state === 'string') {
-      Login.getTwitchResponse(code, state)
+      AuthAPI.getTwitchResponse(code, state)
         .then((value) => {
           const data = value.data.data;
           this.$cookies.set('accessToken', data.accessToken, '30M', undefined, undefined, Util.isProduction());

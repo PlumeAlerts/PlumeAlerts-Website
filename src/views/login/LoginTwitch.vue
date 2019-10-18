@@ -8,14 +8,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Login from '@/network/v1/login';
+import AuthAPI from '@/network/v1/AuthAPI';
 
 @Component
 export default class LoginTwitch extends Vue {
   private error: string = '';
 
   public created() {
-    Login.getTwitchAuth()
+    AuthAPI.getTwitchAuth()
       .then((value) => {
         window.location.href = value.data.data.url;
       })

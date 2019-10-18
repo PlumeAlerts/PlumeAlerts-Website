@@ -21,7 +21,7 @@
                  :key="item.i">
         <ComponentCard :title="item.title"
                        v-on:close="close(item)">
-          <component :is="item.component"></component>
+          <component :is="item.component" :user="user"></component>
         </ComponentCard>
       </grid-item>
     </grid-layout>
@@ -35,7 +35,7 @@ import VueGridLayout, {GridItemData} from 'vue-grid-layout';
 import ComponentCard from '@/components/dashboard/ComponentCard.vue';
 import ComponentChat from '@/components/dashboard/ComponentChat.vue';
 import ComponentNotifications from '@/components/dashboard/ComponentNotifications.vue';
-import User, {DashboardData} from '@/network/v1/user';
+import UserAPI, {DashboardData, User} from '@/network/v1/UserAPI';
 
 interface CardType {
   COMPONENT: string;
@@ -72,9 +72,16 @@ interface CustomData extends GridItemData {
 export default class DashboardHome extends Vue {
 
   private layout: CustomData[] = [];
+  private user?: User;
 
   public mounted() {
-    User.getDashboard()
+    UserAPI.getUser()
+      .then((value) => {
+        this.user = value.data.data;
+      })
+      .catch((reason) => console.log(reason));
+
+    UserAPI.getDashboard()
       .then((value) => {
         for (const [i, dashboard] of value.data.data.entries()) {
           const type: string = dashboard.type;
@@ -107,7 +114,7 @@ export default class DashboardHome extends Vue {
       height: item.h,
       show: item.show,
     };
-    User.putDashboard(data);
+    UserAPI.putDashboard(data);
   }
 }
 </script>

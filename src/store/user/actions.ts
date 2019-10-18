@@ -4,7 +4,7 @@ import {RootState} from '../types';
 import Vue from 'vue';
 import Util from '@/util/util';
 import Tokens from '@/util/tokens';
-import APILogin from '@/network/v1/login';
+import AuthAPI from '@/network/v1/AuthAPI';
 
 const LOGGED_IN = 'loggedIn';
 
@@ -25,7 +25,7 @@ export const actions: ActionTree<UserState, RootState> = {
         return true;
       }
 
-      const loggedIn = await APILogin.postValidate(Vue.cookies.get('accessToken'))
+      const loggedIn = await AuthAPI.postValidate(Vue.cookies.get('accessToken'))
         .then((value) => {
           if (value.status === 200) {
             commit('lastValidated', new Date().getTime());

@@ -1,19 +1,25 @@
 <template>
   <iframe
     id="chat_embed"
-    src="https://www.twitch.tv/embed/lclc98/chat?darkpopout"
+    :src="`https://www.twitch.tv/embed/${user.id}/chat?darkpopout`"
     frameborder="0"
     scrolling="no"
     width="100%"
-    height="100%" style="height:100%">
+    height="100%" style="height:100%"
+    title="Twitch chat">
   </iframe>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {User} from '@/network/v1/UserAPI';
 
-@Component
+@Component({
+  props: {
+    user: Object as () => User,
+  },
+})
 export default class ComponentChat extends Vue {
 }
 </script>

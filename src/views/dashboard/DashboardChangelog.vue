@@ -14,6 +14,7 @@
     <h3 class="title is-3">Bug Fixes</h3>
     <ul>
       <li>Fixed logo going to landing page instead of dashboard.</li>
+      <li>Fixed chat showing the wrong user.</li>
     </ul>
   </div>
 </template>

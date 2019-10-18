@@ -1,4 +1,4 @@
-import API, {Data} from './api';
+import API, {Data} from './API';
 import {AxiosResponse} from 'axios';
 import Vue from 'vue';
 
