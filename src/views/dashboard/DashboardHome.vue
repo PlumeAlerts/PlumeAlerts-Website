@@ -18,6 +18,8 @@
                  :h="item.h"
                  :i="item.i"
                  dragAllowFrom=".card-draggable"
+                 @resized="resizedEvent"
+                 @moved="movedEvent"
                  :key="item.i">
         <ComponentCard :title="item.title"
                        v-on:close="close(item)">
@@ -102,6 +104,32 @@ export default class DashboardHome extends Vue {
         }
       })
       .catch((reason) => console.log(reason));
+  }
+
+  public movedEvent(id: number, x: number, y: number) {
+    const item: CustomData = this.layout[id];
+    const data: DashboardData = {
+      type: item.type,
+      x,
+      y,
+      width: item.w,
+      height: item.h,
+      show: item.show,
+    };
+    UserAPI.putDashboard(data);
+  }
+
+  public resizedEvent(id: number, height: number, width: number) {
+    const item: CustomData = this.layout[id];
+    const data: DashboardData = {
+      type: item.type,
+      x: item.x,
+      y: item.y,
+      width,
+      height,
+      show: item.show,
+    };
+    UserAPI.putDashboard(data);
   }
 
   public close(item: CustomData) {

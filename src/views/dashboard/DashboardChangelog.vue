@@ -15,6 +15,7 @@
     <ul>
       <li>Fixed logo going to landing page instead of dashboard.</li>
       <li>Fixed chat showing the wrong user.</li>
+      <li>Fixed dragging and resizing not syncing to database.</li>
     </ul>
   </div>
 </template>
