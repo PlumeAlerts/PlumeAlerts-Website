@@ -1,9 +1,7 @@
 <template>
   <iframe
     id="chat_embed"
-    :src="`https://www.twitch.tv/embed/${user.id}/chat?darkpopout`"
-    frameborder="0"
-    scrolling="no"
+    :src="`https://www.twitch.tv/embed/${user.login}/chat?darkpopout`"
     width="100%"
     height="100%" style="height:100%"
     title="Twitch chat">
