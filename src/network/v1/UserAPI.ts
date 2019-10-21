@@ -15,9 +15,16 @@ export enum NotificationType {
 }
 
 export interface Notification {
+  id: number;
+  type: string;
+  hide: boolean;
   userId: string;
   createdAt: number;
-  type: string;
+}
+
+export interface NotificationHide {
+  id: number;
+  hide: boolean;
 }
 
 export interface NotificationFollow extends Notification {
@@ -40,10 +47,15 @@ export default {
   getDashboard(): Promise<AxiosResponse<Data<DashboardData[]>>> {
     return API.get('/user/dashboard', {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}});
   },
-  putDashboard(data: DashboardData): Promise<AxiosResponse<Data<DashboardData[]>>> {
+  putDashboard(data: DashboardData): Promise<AxiosResponse<Data<DashboardData>>> {
     return API.put('/user/dashboard', {data}, {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}});
   },
   getNotifications(): Promise<AxiosResponse<Data<Notification[]>>> {
     return API.get('/user/notifications', {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}});
+  },
+  putNotifications(data: NotificationHide): Promise<AxiosResponse<Data<NotificationHide>>> {
+    return API.put('/user/notifications', {data},
+      {headers: {Authorization: 'Bearer ' + Vue.cookies.get('accessToken')}},
+    );
   },
 };

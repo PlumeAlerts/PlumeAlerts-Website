@@ -23,7 +23,7 @@
                  :key="item.i">
         <ComponentCard :title="item.title"
                        v-on:close="close(item)">
-          <component :is="item.component" :user="user"></component>
+          <component :is="item.component" :user="user"/>
         </ComponentCard>
       </grid-item>
     </grid-layout>
