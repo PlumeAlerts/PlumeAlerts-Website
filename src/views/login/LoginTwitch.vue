@@ -14,7 +14,7 @@ import AuthAPI from '@/network/v1/AuthAPI';
 export default class LoginTwitch extends Vue {
   private error: string = '';
 
-  public created() {
+  public mounted() {
     AuthAPI.getTwitchAuth()
       .then((value) => {
         window.location.href = value.data.data.url;
