@@ -25,6 +25,8 @@ jobs:
         run: pip install --upgrade b2
       - name: Install yarn
         run: npm install -g yarn
+      - name: Install packages
+        run: apt install openssh-client rsync
 
       - name: npm install, build, and test
         run: |
@@ -43,8 +45,7 @@ jobs:
           private-key: ${{ secrets.STAGING_SSH_PRIVATE }}
           public-key: ${{ secrets.STAGING_SSH_PUBLIC }}
           known-hosts: ${{ secrets.SFTP_STAGING_HOST }}
-      - name: Install packages
-        run: apt install openssh-client rsync
+
       - name: Deploy
           run: |
-          rsync -r --delete-after dist/index.html ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
+            rsync -r --delete-after dist/index.html ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
