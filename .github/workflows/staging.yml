@@ -44,7 +44,7 @@ jobs:
         with:
           private-key: ${{ secrets.STAGING_SSH_PRIVATE }}
           public-key: ${{ secrets.STAGING_SSH_PUBLIC }}
-          known-hosts: ${{ secrets.SFTP_STAGING_HOST }}
+          known-hosts: ${{ secrets.STAGING_KNOWN_HOSTS }}
 
       - name: Deploy
         run: |
