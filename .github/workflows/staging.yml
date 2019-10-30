@@ -40,7 +40,7 @@ jobs:
           b2 sync --keepDays 14 --replaceNewer dist/ b2://plumealerts/staging/
 
       - name: Install SSH key
-        uses: shimataro/ssh-key-action@v1
+        uses: shimataro/ssh-key-action@v1.3.0
         with:
           private-key: ${{ secrets.STAGING_SSH_PRIVATE }}
           public-key: ${{ secrets.STAGING_SSH_PUBLIC }}
