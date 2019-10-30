@@ -14,11 +14,11 @@ jobs:
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: '10.x'
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
-          version: 3.7
+          python-version: '3.7'
 
       # Install dependencies
       - name: Install B2
@@ -32,17 +32,19 @@ jobs:
           yarn lint
           yarn build:staging
 
-      - name: deploy
+      - name: deploy backblaze
         run: |
           b2 authorize-account ${{ secrets.B2_STAGING_KEY_ID }} ${{ secrets.B2_STAGING_APPLICATION_KEY }}
           b2 sync --keepDays 14 --replaceNewer dist/ b2://plumealerts/staging/
 
-          echo "${{ secrets.SFTP_STAGING_KEY }}" | base64 --decode >/tmp/deploy_rsa
-          eval $(ssh-agent -s)
-          ssh-keyscan ${{ secrets.SFTP_STAGING_HOST }} >> ~/.ssh/known_hosts
-          chmod 600 /tmp/deploy_rsa
-          ssh-add /tmp/deploy_rsa
-
-          rsync -r --delete-after dist/ ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
-        env:
-          CI: true
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v1
+        with:
+          private-key: ${{ secrets.STAGING_SSH_PRIVATE }}
+          public-key: ${{ secrets.STAGING_SSH_PUBLIC }}
+          known-hosts: ${{ secrets.SFTP_STAGING_HOST }}
+      - name: Install packages
+        run: apt install openssh-client rsync
+      - name: Deploy
+          run: |
+          rsync -r --delete-after dist/index.html ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
