@@ -47,5 +47,5 @@ jobs:
           known-hosts: ${{ secrets.SFTP_STAGING_HOST }}
 
       - name: Deploy
-          run: |
-            rsync -r --delete-after dist/index.html ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
+        run: |
+          rsync -r --delete-after dist/index.html ${{ secrets.SFTP_STAGING_USER }}@${{ secrets.SFTP_STAGING_HOST }}:${{ secrets.SFTP_STAGING_PATH }}
