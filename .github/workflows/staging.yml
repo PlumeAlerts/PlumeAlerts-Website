@@ -1,4 +1,4 @@
-name: Node CI
+name: CI
 on:
   schedule:
     - cron: "0 0 * * 0"
@@ -22,7 +22,7 @@ jobs:
 
       # Install dependencies
       - name: Install B2
-        run: pip install --user --upgrade b2
+        run: pip install --upgrade b2
       - name: Install yarn
         run: npm install -g yarn
 
