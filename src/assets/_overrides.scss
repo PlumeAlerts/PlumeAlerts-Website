@@ -13,10 +13,6 @@ h6 {
   letter-spacing: 0.5px;
 }
 
-.hero {
-  background-color: $grey-dark;
-}
-
 a {
   transition: all 200ms ease;
 }
@@ -98,10 +94,6 @@ a {
   }
 }
 
-.notification {
-  background-color: $grey-dark;
-}
-
 .card {
   $card-border-color: lighten($grey-darker, 5);
   box-shadow: none;
@@ -133,6 +125,8 @@ a {
 }
 
 .notification {
+  background-color: $grey-dark;
+
   @each $name, $pair in $colors {
     $color: nth($pair, 1);
     $color-invert: nth($pair, 2);
@@ -284,6 +278,8 @@ body > .navbar {
 }
 
 .hero {
+  background-color: $grey-dark;
+
   // Colors
   @each $name, $pair in $colors {
     $color: nth($pair, 1);

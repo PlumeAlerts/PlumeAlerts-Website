@@ -9,7 +9,6 @@
           <ul class="menu-list">
             <li><a @click="select('DashboardHome')"
                    :class="tab==='DashboardHome'?'is-active':''">Dashboard</a></li>
-            <!--            <li><a @click="select('Dashboard')">Settings</a></li>-->
             <li><a @click="select('DashboardChangelog')"
                    :class="tab==='DashboardChangelog'?'is-active':''">Changelog</a></li>
           </ul>
