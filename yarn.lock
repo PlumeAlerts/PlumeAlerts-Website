@@ -8225,12 +8225,10 @@ vue-cookies@^1.6.0:
   resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.6.0.tgz#4f658aeac639bdd8b0b9a72dd270fa3d9e2e9e78"
   integrity sha512-cgGshxubXTZZpVcEMWVY6z7QkKyn1KSezCVz5AkbEAn76gYOX39vcf8uKjOWDoaAe2HZY/Rog9SBkrcEpEXU7Q==
 
-vue-file-agent@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.4.0.tgz#a17445ce7703e3e61df4deafda7be28f89734367"
-  integrity sha512-0unO4GnbB7ioEtp4xSG3AM6oE3dHPP2vnT/NgjDtVXwJ6uo/jrN1uoZ6MmyZ0Gy0fMB5HWpILWEmA45Fhc++zw==
-  dependencies:
-    vue "^2.6.10"
+vue-file-agent@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.4.2.tgz#4d55015c217724150538cf7063fe3103eeefabbe"
+  integrity sha512-Rp0tjrj+2Z2YN3f8LXEFaLPpgzWaz/ZjJv0bmcpAQtjWZN4z0DwwxfA8yPjmFLlCxiOKehcTEgY6NRtcGajSCw==
 
 vue-grid-layout@^2.3.7:
   version "2.3.7"
@@ -8282,7 +8280,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10, vue@^2.6.11:
+vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
