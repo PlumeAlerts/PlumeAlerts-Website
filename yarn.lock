@@ -8220,10 +8220,10 @@ vue-class-component@^7.1.0:
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.1.0.tgz#b33efcb10e17236d684f70b1e96f1946ec793e87"
   integrity sha512-G9152NzUkz0i0xTfhk0Afc8vzdXxDR1pfN4dTwE72cskkgJtdXfrKBkMfGvDuxUh35U500g5Ve4xL8PEGdWeHg==
 
-vue-cookies@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.6.0.tgz#4f658aeac639bdd8b0b9a72dd270fa3d9e2e9e78"
-  integrity sha512-cgGshxubXTZZpVcEMWVY6z7QkKyn1KSezCVz5AkbEAn76gYOX39vcf8uKjOWDoaAe2HZY/Rog9SBkrcEpEXU7Q==
+vue-cookies@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.6.1.tgz#ab036382d37a3f4c83140e0175d9dc60ce67fe01"
+  integrity sha512-qyzhuq0x9xLEwniSXFoEsFErHgQ24jviB527IDul+8KrlxU9jdqrvVunRRBk4lPpxPgL0ywv8NxcD6MDWcTMug==
 
 vue-file-agent@^1.4.2:
   version "1.4.2"
