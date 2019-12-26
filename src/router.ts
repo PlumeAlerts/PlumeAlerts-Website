@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
       .then((value: boolean) => {
         if (value) {
           next();
-        } else if (Vue.cookies.isKey('accessToken')) {
+        } else if (Vue.$cookies.isKey('accessToken')) {
           // TODO Status down page
           next();
         } else {
