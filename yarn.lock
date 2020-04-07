@@ -8524,10 +8524,10 @@ vue-cookies@^1.7.0:
   resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.7.0.tgz#dd8f147ff1579e0cbd5f352dc5dff2696d8760b8"
   integrity sha512-vuEUm6wYMMrFAHFCrkzIUAy8+MgPAbBGmYXnk2M6X6O2KHbMT1wuDD2izacmsSUp6ZM02e23MJRtPRobl88VMg==
 
-vue-file-agent@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.6.0.tgz#e540a6539f66531450ea6104b4f35a3f8cc3b433"
-  integrity sha512-mJza3OXoW6PnPHybCrRO+PbV0f59flNffdCBKkrJzvS2P3d6jLAvg/Dsi9Wh5CThWHiJEsfvMBzxYFL/u57cww==
+vue-file-agent@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/vue-file-agent/-/vue-file-agent-1.6.2.tgz#5461c6f35ce2c2c02c0aa0968200c3f34eafcbab"
+  integrity sha512-STk7mtSiRFw/K1fQwsB1/oDM2SlpHCyYXvXfgKnFOtILyBfyIfvwTl6CcFWvPwNHHWVxHh5GNYvP4+SbQ/fKbA==
   dependencies:
     vue "^2.6.11"
 
